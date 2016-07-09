@@ -1,4 +1,5 @@
 <?php
+//include('/nicelifes/config/routes.php');
 /**
  * CodeIgniter
  *

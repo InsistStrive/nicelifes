@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<script type="text/javascript" src="jQuery.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" >
+function post(){
+	var data="sdffd电饭锅";
+	var html='';
+	alert("post");
+	callapi('../dcphp/urs/R/test.php?page=1&size=100',function(json){
+		alert("error1");
+		if(json.code==0){
+			var list = json.data;
+			for(var index in list){
+				var item = list[index];
+				html += "<p>"+item.name+'</P>&nbsp&nbsp<p>'+item.title+'</p>';
+			}
+			$('#data').html(html);
+		}else{
+			alert("error");
+		}
+	});
+
+}
+</script>
+</head>
+<body>
+<input type="button" value="post" id="post" onclick="post()"></input>
+<div id="data"></div>
+</body>
+</html>
