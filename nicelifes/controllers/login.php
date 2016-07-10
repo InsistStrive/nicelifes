@@ -1,4 +1,7 @@
 <?php
+//header('Content-type: text/json;charset=utf-8');
+//header("Content-Disposition:attachment;filename=login.json");
+header("Access-Control-Allow-Origin:*"); //允许任何访问(包括ajax跨域) 
 /*
  * Created on 2016-7-6
  *

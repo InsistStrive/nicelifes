@@ -2,21 +2,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<script type="text/javascript" src="jQuery.min.js"></script>
+<script type="text/javascript" src="jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" >
+$(document).ready(function(){
+	  $("button").click(function(){
+		  alert("result");
+	    $.getJSON("http://localhost:81/nicelifes/login/login/永不言弃/123456",function(result){
+	    	alert(result);
+	      $.each(result, function(i, field){
+	        $("p").append(field + " ");
+	      });
+	    });
+	  });
+	});
 function post(){
 	var data="sdffd电饭锅";
 	var html='';
-	alert("post");
-	callapi('../dcphp/urs/R/test.php?page=1&size=100',function(json){
-		alert("error1");
+	callapi('http://localhost:81/nicelifes/login/login/永不言弃/123456',function(json){
 		if(json.code==0){
-			var list = json.data;
-			for(var index in list){
-				var item = list[index];
-				html += "<p>"+item.name+'</P>&nbsp&nbsp<p>'+item.title+'</p>';
-			}
+			var msg = json.msg;
+			
+			html += "<p>"+msg+'</p>';
+			
 			$('#data').html(html);
 		}else{
 			alert("error");
@@ -27,6 +35,8 @@ function post(){
 </script>
 </head>
 <body>
+<button>获得 JSON 数据</button>
+<p></p>
 <input type="button" value="post" id="post" onclick="post()"></input>
 <div id="data"></div>
 </body>
